@@ -1,18 +1,15 @@
 function solution(s) {
-  const openingBracket = "(";
   const stack = [];
 
   for (const char of s) {
-    if (openingBracket === char) {
+    if (char === '(') {
       stack.push(char);
+    } else {
+      if (stack.length === 0) return false;
 
-      continue;
+      stack.pop();
     }
-
-    if (stack.length === 0) return false;
-
-    stack.pop();
   }
 
-  return stack.length === 0 ? true : false;
+  return stack.length === 0;
 }
